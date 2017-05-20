@@ -1,0 +1,496 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+  font-family: arial,sans-serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.cars {
+  align-items: baseline;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.car {
+  border-left: 4px solid black;
+  margin: 0 auto 1rem;
+  max-width: 680px;
+  overflow: hidden;
+}
+
+.car--number {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 60px;
+  text-align: center;
+}
+
+.car--number,
+.car--technical {
+	float: left;
+	width: 50%;
+}
+
+.car--class::after,
+.car--hybrid-type {
+  border-radius: 0 5px 5px 0;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.car--hybrid-type {
+	height: 1.125rem;
+  margin-top: 3px;
+}
+
+.car--number, 
+.car--class::after,
+.car--hybrid-type::after {
+  color: white;
+}
+
+.lmp1 .car--number, 
+.lmp1 .car--class::after,
+.lmp1 .car--hybrid-type::after {
+  background: red;
+  color: white;
+}
+
+.lmp2 .car--number, 
+.lmp2 .car--class::after {
+	background: #005395;
+}
+
+.gtpro .car--number, 
+.gtpro .car--class::after {
+	background: #00A850;
+}
+
+.lmp1 .car--class::after {
+  content: 'LMP1';
+}
+.lmp2 .car--class::after {
+  content: 'LMP2';
+}
+.gtpro .car--class::after {
+  content: 'GT PRO';
+}
+.gtam .car--class::after {
+  content: 'GT AM';
+}
+
+[data-hybrid="8"] .car--hybrid-type::after {
+	border-radius: 0 4px 5px 0;
+	content: 'Hybrid (8MJ)';
+  display: block;
+}
+
+.car--tires::after {
+	background-position: center center;
+	background-repeat: no-repeat;
+  border-radius: 0 5px 5px 0;
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  margin-top: 3px;
+  text-indent: -9999em;
+}
+
+[data-tires="michelin"] .car--tires::after {
+  background-color: #075CA8;
+	background-image: url('../img/michelin.png');
+	content: 'Michelin';
+}
+
+[data-tires="dunlop"] .car--tires::after {
+  background-color: #FEDD00;
+  background-image: url('../img/dunlop.png');
+	content: 'Dunlop';
+}
+
+.car--chassis {
+	margin-left: -100%;
+}
+
+.car--chassis::after {
+	background-position: center center;
+	background-repeat: no-repeat;
+  display: block;
+  font-size: 1rem;
+  line-height: 70px;
+  text-indent: -9999em;
+}
+
+	[data-chassis="porsche"] .car--chassis::after {
+    background-image: url('../img/porsche.png');
+		content: 'Porsche';
+	}
+
+	[data-chassis="clm"] .car--chassis::after {
+    background-image: url('../img/clm.png');
+		content: 'CLM';
+	}
+
+	[data-chassis="ligier"] .car--chassis::after {
+    background-image: url('../img/ligier.png');
+		content: 'Ligier';
+	}
+
+	[data-chassis="ferrari"] .car--chassis::after {
+    background-image: url('../img/ferrari.png');
+		content: 'Ferrari';
+	}
+
+.team--garage,
+.team--series {
+  background: #E5E5E5;
+  border-radius: 0 5px 5px 0;
+  display: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  float: left;
+  line-height: 1.5;
+  margin-top: 3px;
+  padding: 0 0.5rem;
+  width: 49%;
+}
+
+.team--garage {
+	margin-right: 2%;
+}
+
+.team--garage::before {
+	background: url('../img/garage.png') left bottom no-repeat #E5E5E5;
+  content: 'Garage';
+  display: inline-block;
+  height: 1.125rem;
+	text-indent: -9999rem;
+	width: 1.6rem;
+}
+
+.team--series::after {
+	background-position: center center;
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: -9999rem;
+}
+
+	[data-series="wec"] .team--series::after {
+		background-image: url('../img/wec.png');
+		content: 'WEC';
+	}
+
+	[data-series="elms"] .team--series::after {
+		background-image: url('../img/elms.png');
+		content: 'ELMS';
+	}
+
+.drivers {
+	background: #E5E5E5;
+	border-radius: 0 5px 5px 0;
+  display: table;
+  padding: 0.125rem 0.5rem;;
+  width: 100%;
+}
+
+	.drivers .driver {
+  	font-size: 0.9375rem;
+	}
+
+	.driver--name-first,
+	.driver--nationality {
+		color: #666666;
+	}
+
+	.driver--name-last {
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	.driver--nationality {
+		display: none;
+    font-size: 0.625rem;
+    position: relative;
+    top: -2px;
+	}
+
+	.driver--nationality::before {
+		content: '(';
+	}
+
+	.driver--nationality::after {
+		content: ')';
+	}
+
+	.driver--grade::before {
+		border: 1px solid black;
+		border-radius: 100%;
+		display: inline-block;
+		font-size: 0.4375rem;
+		height: 10px;
+		line-height: 10px;
+		padding-left: 3px;
+		position: relative;
+		top: -3px;
+		width: 7px;
+	}
+
+		[data-driver-grade="platinum"] .driver--grade::before {
+			background: white;
+			content: 'P';
+		}
+
+		[data-driver-grade="silver"] .driver--grade::before {
+			background: silver;
+			content: 'S';
+		}
+
+		[data-driver-grade="gold"] .driver--grade::before {
+			background: gold;
+			content: 'G';
+		}
+
+		[data-driver-grade="bronze"] .driver--grade::before {
+			background: #9F6E45;
+			content: 'B';
+		}
+
+.team--twitter {
+  background: #E5E5E5;
+	border-radius: 0 5px 5px 0;
+	display: inline-block;
+  margin-top: 3px;
+  margin-right: 1rem;
+  padding-left: 0.5rem;
+  width: 100%;
+}
+
+	.twitter--logo {
+	  background: url('../img/twitter.png') center center no-repeat transparent;
+	  background-size: cover;
+	  content: "twitter";
+    display: inline-block;
+	  height: 0.75rem;
+	  text-indent: -9999rem;
+	  width: 0.75rem;
+	}
+
+	.twitter--link {
+		font-size: 0.75rem;
+		font-weight: bold;
+	}
+
+		.twitter--link a,
+		.twitter--link a:hover,
+		.twitter--link a:visited {
+			color: black;
+			text-decoration: none;
+		}
+
+.car--unique-id {
+  background: #E5E5E5;
+  border-radius: 0 5px 5px 0;
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.15rem;
+  margin-top: 3px;
+  padding: 0 0.5rem;
+  width: 100%;
+}
+
+.team--detail {
+  background: black;
+  color: white;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.car--image {
+	margin-top: 3px;
+}
+
+.team--nationality,
+.team--name {
+  display: inline-block;
+}
+
+.team--nationality::after {
+  background-position: center center;
+  background-repeat: no-repeat;
+	display: block;
+  height: 1.3rem;
+  text-indent: -9999rem;
+  width: 1rem;
+}
+
+	[data-team-nationality="de"] .team--nationality::after {
+		background-image: url('../img/flag-de.png');
+		content: 'DE';
+	}
+
+	[data-team-nationality="ch"] .team--nationality::after {
+		background-image: url('../img/flag-ch.png');
+		content: 'CH';
+	}
+
+	[data-team-nationality="fr"] .team--nationality::after {
+		background-image: url('../img/flag-fr.png');
+		content: 'FR';
+	}
+
+	[data-team-nationality="it"] .team--nationality::after {
+		background-image: url('../img/flag-it.png');
+		content: 'IT';
+	}
+
+
+
+.team--mechanical {
+	text-transform: uppercase;
+}
+
+	.team--chassis,
+	.team--model,
+	.team--engine {
+		display: inline-block;
+	}
+
+[data-chassis="porsche"] .team--chassis::after {
+	content: 'porsche';
+}
+
+[data-model="919"] .team--model::after {
+	content: '919';
+}
+
+[data-engine="Hybrid"] .team--engine::after {
+	content: 'Hybrid';
+}
+
+[data-chassis="clm"] .team--chassis::after {
+	content: 'clm';
+}
+
+[data-model="P1/01"] .team--model::after {
+	content: 'P1/01';
+}
+
+[data-engine="AER"] .team--engine::after {
+	content: '- AER';
+}
+
+[data-chassis="ligier"] .team--chassis::after {
+	content: 'Ligier';
+}
+
+[data-model="JS P2"] .team--model::after {
+	content: 'JS P2';
+}
+
+[data-engine="Judd"] .team--engine::after {
+	content: '- Judd';
+}
+
+[data-engine="Nissan"] .team--engine::after {
+	content: '- Nissan';
+}
+
+[data-chassis="ferrari"] .team--chassis::after {
+	content: 'Ferrari';
+}
+
+[data-model="488 GTE"] .team--model::after {
+	content: '488 GTE';
+}
+
+@media screen and (min-width: 500px) {
+	.car {
+		padding-right: 1rem;
+		width: 50%;
+	}
+
+		.car:nth-of-type(2n) {
+	    padding-right: 0;
+		}
+}
+
+@media screen and (min-width: 800px) {
+	.car {
+		width: 100%;
+	}
+
+	.car--number,
+	.car--technical {
+		float: none;
+		width: 100%;
+	}
+
+	.car--class::after {
+		margin-top: 3px;
+	}
+
+	.car--chassis {
+		margin-left: 0;
+	}
+
+	.left--col {
+    display: table-cell;
+    vertical-align: top;
+    max-width: 100px;
+    width: 15%;
+    white-space: nowrap;
+	}
+
+	.right--col {
+		display: table-cell;
+		vertical-align: top;
+	}
+
+	.drivers .driver {
+		display: table-cell;
+	}
+
+	.driver--nationality {
+		display: inline;
+	}
+
+	.team--info {
+		float: left;
+		margin-right: 1%;
+		width: 29%;
+	}
+
+	.team--garage,
+	.team--series {
+		display: block;
+    float: none;
+    margin-right: 0;
+    width: 35%;
+	}
+
+	.car--unique-id {
+  	width: 70%;
+	}
+
+	.car--image {
+		margin-top: 0;
+	}
+
+	.team--mechanical {
+		float: right;
+		margin-right: 0.5rem;
+	}
+}
